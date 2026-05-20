@@ -62,6 +62,22 @@ Open `http://localhost:3000`.
 
 The app includes a mock provider and sample dataset, so it can be demonstrated without a real API key.
 
+## Docker Desktop
+
+Run with Docker Desktop:
+
+```bash
+docker compose up --build -d
+```
+
+Open `http://localhost:3000`.
+
+Stop the container:
+
+```bash
+docker compose down
+```
+
 ## Environment Variables
 
 Copy `.env.example` to `.env.local` and fill values only when you want persistent Supabase storage or a real model provider.

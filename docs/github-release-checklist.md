@@ -8,6 +8,7 @@
 - [ ] `pnpm test` passes.
 - [ ] `pnpm build` passes.
 - [ ] README quickstart works.
+- [ ] Docker Desktop run works with `docker compose up --build -d`.
 - [ ] Supabase migration is present.
 - [ ] Sample dataset is present.
 - [ ] Mock provider demo works without secrets.

@@ -2,6 +2,7 @@
   "name": "agenteval-lite",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.2",
   "description": "A lightweight visual workbench for prompt and agent evaluation.",
   "scripts": {
     "dev": "next dev",

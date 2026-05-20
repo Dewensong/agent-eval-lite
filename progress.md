@@ -13,6 +13,11 @@
 - 增加 Supabase migration、sample dataset、README、License、架构/评测/数据模型/GitHub checklist 文档。
 - 下一步：执行 lint/typecheck/test/build，修复质检问题后提交。
 
+## 2026-05-20
+- 增加 Docker Desktop 运行配置：`Dockerfile`、`docker-compose.yml`、`.dockerignore`。
+- 将 Next.js 配置为 standalone 生产输出，便于容器内运行。
+- 下一步：构建镜像并在 Docker Desktop 中验证 `http://localhost:3000`。
+
 ## 记录规则
 - 每次重要推进追加一条日期记录
 - 记录做了什么、产出了什么、下一步是什么
