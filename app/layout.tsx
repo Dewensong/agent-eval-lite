@@ -4,12 +4,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AgentEval Lite",
-  description: "A lightweight visual workbench for prompt and agent evaluation."
+  description: "轻量级、可视化的 Prompt / Agent 评测工作台。"
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body>{children}</body>
     </html>
   );

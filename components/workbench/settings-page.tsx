@@ -12,17 +12,17 @@ export function SettingsPage() {
     <AppShell active="/settings">
       <MobileNav />
       <PageHeader
-        title="Settings / Model Providers"
-        description="Configure OpenAI-compatible providers by base URL, model name and environment variable reference. API keys stay outside the repository."
+        title="模型设置"
+        description="通过 Base URL、模型名称和环境变量名配置 OpenAI-compatible 模型服务；API Key 不写入仓库。"
       />
       <div className="grid gap-4 lg:grid-cols-[380px_1fr]">
         <Card>
           <CardHeader>
-            <CardTitle>Provider config</CardTitle>
+            <CardTitle>模型服务配置</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <label className="block text-sm font-medium">
-              Provider name
+              服务名称
               <Input className="mt-2" defaultValue={demoProvider.name} />
             </label>
             <label className="block text-sm font-medium">
@@ -30,34 +30,34 @@ export function SettingsPage() {
               <Input className="mt-2" defaultValue="https://api.openai.com/v1" />
             </label>
             <label className="block text-sm font-medium">
-              Model name
+              模型名称
               <Input className="mt-2" defaultValue="gpt-4o-mini" />
             </label>
             <label className="block text-sm font-medium">
-              API key env name
+              API Key 环境变量名
               <Input className="mt-2" defaultValue="OPENAI_COMPATIBLE_API_KEY" />
             </label>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Runtime safety</CardTitle>
+            <CardTitle>运行安全</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-3 md:grid-cols-2">
             <SafetyCard
               icon={KeyRound}
-              title="No hardcoded keys"
-              description="Provider rows reference env names; secrets are read from local environment variables."
+              title="不硬编码密钥"
+              description="模型服务只保存环境变量名，真实密钥从本地环境变量读取。"
             />
             <SafetyCard
               icon={ServerCog}
               title="OpenAI-compatible"
-              description="Kimi, Qwen, DeepSeek, GLM, OpenAI and local gateways can share the same adapter shape."
+              description="Kimi、Qwen、DeepSeek、GLM、OpenAI 和本地网关都可以复用同一套适配形态。"
             />
             <div className="rounded-lg border bg-teal-50 p-4 md:col-span-2">
               <Badge tone="accent">Default mode</Badge>
               <p className="mt-3 text-sm leading-6 text-teal-900">
-                The app ships with mock provider + sample dataset, so screenshots and tests do not depend on paid API calls.
+                应用内置模拟模型和示例测试集，截图展示与测试验证都不依赖付费 API 调用。
               </p>
             </div>
           </CardContent>

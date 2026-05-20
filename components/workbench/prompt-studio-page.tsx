@@ -18,7 +18,7 @@ export function PromptStudioPage() {
   const [systemPrompt, setSystemPrompt] = useState(demoPromptVersion.systemPrompt);
   const [userTemplate, setUserTemplate] = useState(demoPromptVersion.userTemplate);
   const [trialInput, setTrialInput] = useState(
-    "The user says onboarding is smooth, but invoice export is hard to find."
+    "用户反馈：新手引导很顺畅，但发票导出入口很难找到。"
   );
   const [output, setOutput] = useState<string>("");
 
@@ -48,25 +48,25 @@ export function PromptStudioPage() {
     <AppShell active="/prompts">
       <MobileNav />
       <PageHeader
-        title="Prompt Studio"
-        description="Create prompt versions, inspect variables and run a safe mock trial before launching a batch evaluation."
+        title="Prompt 工作台"
+        description="编辑 Prompt 版本、检查变量，并在批量评测前用模拟模型做一次安全试跑。"
       />
       <div className="grid gap-4 lg:grid-cols-[1fr_420px]">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>Prompt editor</CardTitle>
-              <p className="mt-2 text-sm text-muted-foreground">Version 1 · variables use {"{{input}}"}</p>
+              <CardTitle>Prompt 编辑器</CardTitle>
+              <p className="mt-2 text-sm text-muted-foreground">版本 1 · 变量格式使用 {"{{input}}"}</p>
             </div>
-            <Badge tone="accent">Draft saved locally</Badge>
+            <Badge tone="accent">草稿已本地保存</Badge>
           </CardHeader>
           <CardContent className="space-y-4">
             <label className="block text-sm font-medium">
-              Prompt name
+              Prompt 名称
               <Input className="mt-2" value={name} onChange={(event) => setName(event.target.value)} />
             </label>
             <label className="block text-sm font-medium">
-              System prompt
+              系统提示词
               <Textarea
                 className="mt-2 min-h-24"
                 value={systemPrompt}
@@ -74,7 +74,7 @@ export function PromptStudioPage() {
               />
             </label>
             <label className="block text-sm font-medium">
-              User template
+              用户提示词模板
               <Textarea
                 className="mt-2 min-h-48 font-mono"
                 value={userTemplate}
@@ -84,11 +84,11 @@ export function PromptStudioPage() {
             <div className="flex flex-wrap gap-2">
               <Button variant="accent">
                 <Save className="h-4 w-4" />
-                Save version
+                保存版本
               </Button>
               <Button variant="outline" onClick={runTrial}>
                 <PlayCircle className="h-4 w-4" />
-                Run mock trial
+                模拟试跑
               </Button>
             </div>
           </CardContent>
@@ -97,7 +97,7 @@ export function PromptStudioPage() {
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Single case trial</CardTitle>
+              <CardTitle>单条用例试跑</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <label className="block text-sm font-medium">
@@ -109,7 +109,7 @@ export function PromptStudioPage() {
                 />
               </label>
               <div>
-                <div className="mb-2 text-sm font-medium">Rendered prompt</div>
+                <div className="mb-2 text-sm font-medium">渲染后的 Prompt</div>
                 <pre className="max-h-44 overflow-auto rounded-md bg-slate-950 p-3 text-xs leading-5 text-slate-50">
                   {rendered.rendered}
                 </pre>
@@ -118,11 +118,11 @@ export function PromptStudioPage() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Model output</CardTitle>
+              <CardTitle>模型输出</CardTitle>
             </CardHeader>
             <CardContent>
               <pre className="min-h-40 overflow-auto rounded-md bg-white p-3 text-xs leading-5 text-slate-700">
-                {output || "Run the mock trial to preview a JSON response."}
+                {output || "点击模拟试跑，预览 JSON 响应。"}
               </pre>
             </CardContent>
           </Card>

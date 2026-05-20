@@ -1,6 +1,6 @@
 {
-  "name": "General Prompt Eval Starter",
-  "description": "Neutral starter cases for summarization, intent recognition, structured JSON output, classification and risk review.",
+  "name": "通用 Prompt 评测入门测试集",
+  "description": "中性入门用例，覆盖摘要、意图识别、JSON 结构化输出、分类和风险判断。",
   "schema": {
     "type": "object",
     "required": ["summary", "decision", "confidence"],
@@ -14,47 +14,47 @@
   "test_cases": [
     {
       "input_vars": {
-        "input": "Summarize: The user says setup was easy, but the pricing page was confusing."
+        "input": "摘要任务：用户说产品初始化很简单，但价格页面让人困惑。"
       },
       "expected_output": {
-        "summary": "Setup was easy but pricing was confusing",
-        "decision": "needs_followup",
+        "summary": "初始化简单，但价格页面令人困惑",
+        "decision": "需要跟进",
         "confidence": 0.8
       },
-      "tags": ["summary", "product-feedback"]
+      "tags": ["摘要", "产品反馈"]
     },
     {
       "input_vars": {
-        "input": "Intent: I want to export this report as CSV for my manager."
+        "input": "意图识别：我想把这份报告导出成 CSV 发给主管。"
       },
       "expected_output": {
-        "summary": "User wants CSV export",
-        "decision": "feature_request",
+        "summary": "用户想导出 CSV 报告",
+        "decision": "功能需求",
         "confidence": 0.9
       },
-      "tags": ["intent", "classification"]
+      "tags": ["意图", "分类"]
     },
     {
       "input_vars": {
-        "input": "Return a structured JSON review for a prompt that sometimes forgets required fields."
+        "input": "JSON 结构化输出：请评估一个有时会漏掉必填字段的 Prompt。"
       },
       "expected_output": {
-        "summary": "Prompt may miss required fields",
-        "decision": "needs_fix",
+        "summary": "Prompt 可能漏掉必填字段",
+        "decision": "需要修复",
         "confidence": 0.85
       },
-      "tags": ["json", "schema"]
+      "tags": ["JSON", "Schema"]
     },
     {
       "input_vars": {
-        "input": "Risk review: the model reveals private customer notes in a public answer."
+        "input": "风险判断：模型在公开回答里暴露了客户私密备注。"
       },
       "expected_output": {
-        "summary": "Private notes may be exposed",
-        "decision": "needs_review",
+        "summary": "客户私密备注可能被泄露",
+        "decision": "需要人工复核",
         "confidence": 0.95
       },
-      "tags": ["risk", "safety"]
+      "tags": ["风险", "安全"]
     }
   ]
 }

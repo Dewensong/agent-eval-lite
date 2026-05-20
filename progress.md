@@ -18,6 +18,11 @@
 - 将 Next.js 配置为 standalone 生产输出，便于容器内运行。
 - 下一步：构建镜像并在 Docker Desktop 中验证 `http://localhost:3000`。
 
+## 2026-05-20
+- 将 AgentEval Lite App 可见界面切换为中文默认文案：导航、页面标题、按钮、表格、空状态、演示数据和报告解读。
+- 保留 JSON 字段名、OpenAI-compatible 等必要技术术语，避免破坏评测契约和模型适配语义。
+- 下一步：重新运行质检并刷新 Docker Desktop 容器。
+
 ## 记录规则
 - 每次重要推进追加一条日期记录
 - 记录做了什么、产出了什么、下一步是什么

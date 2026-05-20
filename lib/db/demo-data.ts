@@ -7,8 +7,8 @@ const now = "2026-05-20T00:00:00.000Z";
 
 export const demoPrompt: Prompt = {
   id: "prompt_customer_insight",
-  name: "Customer Insight JSON Prompt",
-  description: "Turns short user feedback into structured product insight.",
+  name: "用户反馈洞察 JSON Prompt",
+  description: "把简短用户反馈转成结构化产品洞察。",
   currentVersionId: "prompt_customer_insight_v1",
   createdAt: now,
   updatedAt: now
@@ -19,18 +19,18 @@ export const demoPromptVersion: PromptVersion = {
   promptId: demoPrompt.id,
   version: 1,
   systemPrompt:
-    "You are an evaluation-safe assistant. Return concise JSON only, without markdown fences.",
+    "你是一个用于评测的安全助手。只返回简洁 JSON，不要输出 Markdown 代码块。",
   userTemplate:
-    "Analyze the user input and return JSON with summary, decision, confidence and category.\n\nInput: {{input}}",
+    "分析用户输入，并返回包含 summary、decision、confidence、category 的 JSON。\n\n输入：{{input}}",
   variables: ["input"],
-  notes: "Baseline version for AgentEval Lite smoke tests.",
+  notes: "AgentEval Lite 冒烟测试的基线版本。",
   createdAt: now,
   updatedAt: now
 };
 
 export const demoProvider: ModelProvider = {
   id: "provider_mock",
-  name: "Mock JSON Provider",
+  name: "模拟 JSON 模型",
   type: "mock",
   baseUrl: "mock://local",
   modelName: "mock-json-001",
@@ -44,8 +44,8 @@ export const demoProvider: ModelProvider = {
 
 export const demoDataset: Dataset = {
   id: "dataset_general_eval",
-  name: "General Prompt Eval Starter",
-  description: "A small neutral dataset covering summarization, intent, JSON output, classification and risk review.",
+  name: "通用 Prompt 评测入门测试集",
+  description: "一个中性小测试集，覆盖摘要、意图识别、JSON 结构化输出、分类和风险判断。",
   createdAt: now,
   updatedAt: now,
   testCases: [
@@ -53,14 +53,14 @@ export const demoDataset: Dataset = {
       id: "case_summary",
       datasetId: "dataset_general_eval",
       inputVars: {
-        input: "Summarize: The user says setup was easy, but the pricing page was confusing."
+        input: "摘要任务：用户说产品初始化很简单，但价格页面让人困惑。"
       },
       expectedOutput: {
-        summary: "Setup was easy but pricing was confusing",
-        decision: "needs_followup",
+        summary: "初始化简单，但价格页面令人困惑",
+        decision: "需要跟进",
         confidence: 0.8
       },
-      tags: ["summary", "product-feedback"],
+      tags: ["摘要", "产品反馈"],
       createdAt: now,
       updatedAt: now
     },
@@ -68,14 +68,14 @@ export const demoDataset: Dataset = {
       id: "case_intent",
       datasetId: "dataset_general_eval",
       inputVars: {
-        input: "Intent: I want to export this report as CSV for my manager."
+        input: "意图识别：我想把这份报告导出成 CSV 发给主管。"
       },
       expectedOutput: {
-        summary: "User wants CSV export",
-        decision: "feature_request",
+        summary: "用户想导出 CSV 报告",
+        decision: "功能需求",
         confidence: 0.9
       },
-      tags: ["intent", "classification"],
+      tags: ["意图", "分类"],
       createdAt: now,
       updatedAt: now
     },
@@ -83,14 +83,14 @@ export const demoDataset: Dataset = {
       id: "case_json",
       datasetId: "dataset_general_eval",
       inputVars: {
-        input: "Return a structured JSON review for a prompt that sometimes forgets required fields."
+        input: "JSON 结构化输出：请评估一个有时会漏掉必填字段的 Prompt。"
       },
       expectedOutput: {
-        summary: "Prompt may miss required fields",
-        decision: "needs_fix",
+        summary: "Prompt 可能漏掉必填字段",
+        decision: "需要修复",
         confidence: 0.85
       },
-      tags: ["json", "schema"],
+      tags: ["JSON", "Schema"],
       createdAt: now,
       updatedAt: now
     },
@@ -98,14 +98,14 @@ export const demoDataset: Dataset = {
       id: "case_risk",
       datasetId: "dataset_general_eval",
       inputVars: {
-        input: "Risk review: the model reveals private customer notes in a public answer."
+        input: "风险判断：模型在公开回答里暴露了客户私密备注。"
       },
       expectedOutput: {
-        summary: "Private notes may be exposed",
-        decision: "needs_review",
+        summary: "客户私密备注可能被泄露",
+        decision: "需要人工复核",
         confidence: 0.95
       },
-      tags: ["risk", "safety"],
+      tags: ["风险", "安全"],
       createdAt: now,
       updatedAt: now
     }
@@ -115,16 +115,16 @@ export const demoDataset: Dataset = {
 export const demoAssertions: Assertion[] = [
   {
     id: "assert_is_json",
-    name: "Valid JSON",
+    name: "合法 JSON",
     type: "is-json",
     config: {},
-    description: "The model output must parse as JSON.",
+    description: "模型输出必须能被解析为 JSON。",
     createdAt: now,
     updatedAt: now
   },
   {
     id: "assert_schema",
-    name: "Insight JSON Schema",
+    name: "洞察 JSON Schema",
     type: "json-schema",
     config: {
       schema: {
@@ -138,25 +138,25 @@ export const demoAssertions: Assertion[] = [
         }
       }
     },
-    description: "The output must include required product insight fields.",
+    description: "输出必须包含产品洞察所需字段。",
     createdAt: now,
     updatedAt: now
   },
   {
     id: "assert_contains_summary",
-    name: "Contains summary key",
+    name: "包含 summary 字段",
     type: "contains",
     config: { value: "summary", caseSensitive: false },
-    description: "The raw output should include the summary field.",
+    description: "原始输出需要包含 summary 字段。",
     createdAt: now,
     updatedAt: now
   },
   {
     id: "assert_length",
-    name: "Concise output",
+    name: "输出长度适中",
     type: "length-range",
     config: { min: 20, max: 500, unit: "char" },
-    description: "Keep output concise enough for review.",
+    description: "输出应足够简洁，方便人工审阅。",
     createdAt: now,
     updatedAt: now
   }
@@ -165,8 +165,8 @@ export const demoAssertions: Assertion[] = [
 export const demoReports = [
   {
     id: "report_mock_compare",
-    title: "Mock Provider Baseline Report",
-    headline: "Baseline prompt is stable on JSON validity and schema adherence.",
-    delta: "+18% success rate vs. previous draft"
+    title: "模拟模型基线报告",
+    headline: "基线 Prompt 在 JSON 合法率和 Schema 通过率上表现稳定。",
+    delta: "较上一版草稿通过率提升 18%"
   }
 ];

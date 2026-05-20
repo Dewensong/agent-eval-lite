@@ -11,13 +11,13 @@ export function DatasetPage() {
     <AppShell active="/datasets">
       <MobileNav />
       <PageHeader
-        title="Dataset"
-        description="Manage reusable test cases with input variables, expected outputs and tags. JSON/CSV import starts with a basic local flow."
+        title="测试集"
+        description="管理可复用测试用例，包括输入变量、期望输出和标签；JSON / CSV 导入先提供基础本地版本。"
       />
       <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
         <Card>
           <CardHeader>
-            <CardTitle>Dataset profile</CardTitle>
+            <CardTitle>测试集概况</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-md bg-slate-100 p-4">
@@ -27,23 +27,23 @@ export function DatasetPage() {
             </div>
             <Button className="w-full" variant="outline">
               <FileUp className="h-4 w-4" />
-              Import JSON / CSV
+              导入 JSON / CSV
             </Button>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Test cases</CardTitle>
-            <Badge tone="accent">{demoDataset.testCases.length} cases</Badge>
+            <CardTitle>测试用例</CardTitle>
+            <Badge tone="accent">{demoDataset.testCases.length} 条用例</Badge>
           </CardHeader>
           <CardContent>
             <div className="overflow-hidden rounded-lg border">
               <table className="w-full text-left text-sm">
                 <thead className="bg-slate-50 text-xs uppercase tracking-normal text-slate-500">
                   <tr>
-                    <th className="px-4 py-3">Input</th>
-                    <th className="px-4 py-3">Expected</th>
-                    <th className="px-4 py-3">Tags</th>
+                    <th className="px-4 py-3">输入</th>
+                    <th className="px-4 py-3">期望输出</th>
+                    <th className="px-4 py-3">标签</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y bg-white">

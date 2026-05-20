@@ -18,35 +18,35 @@ export async function DashboardPage() {
     <AppShell active="/dashboard">
       <MobileNav />
       <PageHeader
-        title="Evaluate prompts like a product system, not a one-off guess."
-        description="AgentEval Lite turns prompt versions, datasets, assertions and traces into a repeatable workbench for AI PMs and builders."
+        title="像做产品系统一样评测 Prompt，而不是凭感觉改。"
+        description="AgentEval Lite 把 Prompt 版本、测试集、断言规则和运行轨迹串成一套可复现、可对比、可展示的评测工作台。"
       />
       <div className="mb-6 grid gap-4 metric-grid">
-        <MetricCard icon={Sigma} label="Total runs" value="1" helper="Mock baseline ready" />
-        <MetricCard icon={Gauge} label="Success rate" value={formatPercent(metrics.successRate)} helper="Across sample dataset" />
-        <MetricCard icon={ShieldCheck} label="Schema pass" value={formatPercent(metrics.schemaPassRate)} helper="JSON contract health" />
-        <MetricCard icon={Clock3} label="Avg latency" value={`${formatNumber(metrics.avgLatencyMs)}ms`} helper="Mock provider response" />
-        <MetricCard icon={DollarSign} label="Avg cost" value={formatCost(metrics.avgCost)} helper="Cost-safe demo mode" />
+        <MetricCard icon={Sigma} label="运行次数" value="1" helper="模拟基线已就绪" />
+        <MetricCard icon={Gauge} label="通过率" value={formatPercent(metrics.successRate)} helper="基于内置测试集" />
+        <MetricCard icon={ShieldCheck} label="Schema 通过率" value={formatPercent(metrics.schemaPassRate)} helper="JSON 契约健康度" />
+        <MetricCard icon={Clock3} label="平均延迟" value={`${formatNumber(metrics.avgLatencyMs)}ms`} helper="模拟模型响应" />
+        <MetricCard icon={DollarSign} label="平均成本" value={formatCost(metrics.avgCost)} helper="零成本演示模式" />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>Eval health snapshot</CardTitle>
+              <CardTitle>评测健康快照</CardTitle>
               <p className="mt-2 text-sm text-muted-foreground">
-                Core quality metrics from the current prompt/provider/dataset combination.
+                当前 Prompt / 模型服务 / 测试集组合的核心质量指标。
               </p>
             </div>
-            <Badge tone="success">Completed</Badge>
+            <Badge tone="success">已完成</Badge>
           </CardHeader>
           <CardContent>
             <MetricsChart
               data={[
-                { name: "Success", value: Math.round(metrics.successRate * 100), fill: "#14b8a6" },
+                { name: "通过", value: Math.round(metrics.successRate * 100), fill: "#14b8a6" },
                 { name: "JSON", value: Math.round(metrics.jsonValidRate * 100), fill: "#22c55e" },
                 { name: "Schema", value: Math.round(metrics.schemaPassRate * 100), fill: "#f59e0b" },
-                { name: "Failed", value: metrics.failedCases, fill: "#e11d48" }
+                { name: "失败", value: metrics.failedCases, fill: "#e11d48" }
               ]}
             />
           </CardContent>
@@ -54,8 +54,8 @@ export async function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Recent Eval Runs</CardTitle>
-            <p className="text-sm text-muted-foreground">A resume-friendly run log with clear traceability.</p>
+            <CardTitle>最近评测运行</CardTitle>
+            <p className="text-sm text-muted-foreground">适合展示的运行记录，每一次结果都能追溯。</p>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="rounded-lg border bg-slate-50 p-4">
@@ -63,7 +63,7 @@ export async function DashboardPage() {
                 <div>
                   <div className="font-medium">{snapshot.evalRun.name}</div>
                   <div className="mt-1 text-sm text-slate-600">
-                    {demoPrompt.name} · {demoProvider.modelName} · {demoDataset.testCases.length} cases
+                    {demoPrompt.name} · {demoProvider.modelName} · {demoDataset.testCases.length} 条用例
                   </div>
                 </div>
                 <Badge tone="success">{formatPercent(metrics.successRate)}</Badge>
@@ -73,13 +73,13 @@ export async function DashboardPage() {
                   className="inline-flex h-8 items-center gap-2 rounded-md border bg-white px-3 text-xs font-medium hover:bg-slate-100"
                   href="/results"
                 >
-                  Matrix <ArrowUpRight className="h-3 w-3" />
+                  查看矩阵 <ArrowUpRight className="h-3 w-3" />
                 </Link>
                 <Link
                   className="inline-flex h-8 items-center rounded-md px-3 text-xs font-medium hover:bg-slate-100"
                   href="/reports"
                 >
-                  Compare report
+                  对比报告
                 </Link>
               </div>
             </div>

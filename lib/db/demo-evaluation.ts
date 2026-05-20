@@ -4,7 +4,7 @@ import { MockProviderAdapter } from "@/lib/llm/mock-provider";
 
 export async function getDemoEvaluationSnapshot() {
   return runDatasetEvaluation({
-    name: "AgentEval Lite Mock Baseline",
+    name: "AgentEval Lite 模拟基线评测",
     promptVersion: demoPromptVersion,
     provider: demoProvider,
     dataset: demoDataset,

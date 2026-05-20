@@ -22,13 +22,13 @@ export function AssertionsPage() {
     <AppShell active="/assertions">
       <MobileNav />
       <PageHeader
-        title="Assertions"
-        description="Use promptfoo-inspired rule checks to keep the first version deterministic and easy to explain."
+        title="断言规则"
+        description="借鉴 promptfoo 的规则型检查，让第一版评测保持确定、轻量、容易解释。"
       />
       <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
         <Card>
           <CardHeader>
-            <CardTitle>Create assertion</CardTitle>
+            <CardTitle>创建断言</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {availableTypes.map((type) => (
@@ -44,8 +44,8 @@ export function AssertionsPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Active assertion pack</CardTitle>
-            <Button size="sm" variant="outline">Bind to eval</Button>
+            <CardTitle>当前断言包</CardTitle>
+            <Button size="sm" variant="outline">绑定到评测</Button>
           </CardHeader>
           <CardContent>
             <div className="grid gap-3 md:grid-cols-2">

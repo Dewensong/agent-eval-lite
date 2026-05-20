@@ -45,6 +45,8 @@ function inferCategory(value: string): string {
   if (lower.includes("json")) return "structured-output";
   if (lower.includes("risk") || lower.includes("安全")) return "risk";
   if (lower.includes("intent") || lower.includes("意图")) return "intent";
+  if (lower.includes("风险")) return "risk";
+  if (lower.includes("摘要")) return "summary";
   return "general";
 }
 

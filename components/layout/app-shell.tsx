@@ -13,14 +13,14 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/prompts", label: "Prompt Studio", icon: Bot },
-  { href: "/datasets", label: "Dataset", icon: Database },
-  { href: "/assertions", label: "Assertions", icon: ShieldCheck },
-  { href: "/evaluations", label: "Evaluation Run", icon: PlayCircle },
-  { href: "/results", label: "Result Matrix", icon: BarChart3 },
-  { href: "/reports", label: "Compare Report", icon: GitCompare },
-  { href: "/settings", label: "Settings", icon: Settings }
+  { href: "/dashboard", label: "总览看板", icon: LayoutDashboard },
+  { href: "/prompts", label: "Prompt 工作台", icon: Bot },
+  { href: "/datasets", label: "测试集", icon: Database },
+  { href: "/assertions", label: "断言规则", icon: ShieldCheck },
+  { href: "/evaluations", label: "评测运行", icon: PlayCircle },
+  { href: "/results", label: "结果矩阵", icon: BarChart3 },
+  { href: "/reports", label: "对比报告", icon: GitCompare },
+  { href: "/settings", label: "模型设置", icon: Settings }
 ];
 
 export function AppShell({
@@ -40,7 +40,7 @@ export function AppShell({
             </div>
             <div>
               <div className="text-sm font-semibold">AgentEval Lite</div>
-              <div className="text-xs text-muted-foreground">Prompt eval workbench</div>
+              <div className="text-xs text-muted-foreground">Prompt 评测工作台</div>
             </div>
           </Link>
           <nav className="space-y-1 px-3">
@@ -64,9 +64,9 @@ export function AppShell({
           </nav>
           <div className="mt-auto border-t p-4">
             <div className="rounded-lg bg-teal-50 p-4 text-sm text-teal-900">
-              <div className="font-semibold">Demo safe mode</div>
+              <div className="font-semibold">演示安全模式</div>
               <p className="mt-1 text-xs leading-5 text-teal-800">
-                Mock provider is enabled, so the full eval loop works without an API key.
+                已启用模拟模型服务，无需 API Key 也能跑通完整评测闭环。
               </p>
             </div>
           </div>

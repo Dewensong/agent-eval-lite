@@ -14,35 +14,35 @@ export async function RunDetailPage({ runId }: { runId: string }) {
     <AppShell active="/results">
       <MobileNav />
       <PageHeader
-        title="Run Detail"
-        description={`Inspect the exact input, rendered prompt, model response, assertion reasons and trace payload for ${runId}.`}
+        title="运行详情"
+        description={`查看 ${runId} 的输入、渲染 Prompt、模型响应、断言原因和 Trace 载荷。`}
       />
       <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Case overview</CardTitle>
-            <Badge tone={result.pass ? "success" : "danger"}>{result.pass ? "pass" : "fail"}</Badge>
+            <CardTitle>用例概览</CardTitle>
+            <Badge tone={result.pass ? "success" : "danger"}>{result.pass ? "通过" : "失败"}</Badge>
           </CardHeader>
           <CardContent className="space-y-4">
-            <DetailBlock title="Input" value={JSON.stringify(result.input, null, 2)} />
-            <DetailBlock title="Expected" value={JSON.stringify(result.expected, null, 2)} />
-            <DetailBlock title="Actual output" value={result.actualOutput} />
+            <DetailBlock title="输入" value={JSON.stringify(result.input, null, 2)} />
+            <DetailBlock title="期望输出" value={JSON.stringify(result.expected, null, 2)} />
+            <DetailBlock title="实际输出" value={result.actualOutput} />
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Trace</CardTitle>
+            <CardTitle>运行轨迹</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-3 md:grid-cols-4">
-              <TraceMetric label="Provider" value={demoProvider.modelName} />
-              <TraceMetric label="Latency" value={`${trace.latencyMs}ms`} />
-              <TraceMetric label="Tokens" value={String(trace.totalTokens ?? 0)} />
-              <TraceMetric label="Cost" value={`$${(trace.cost ?? 0).toFixed(4)}`} />
+              <TraceMetric label="模型" value={demoProvider.modelName} />
+              <TraceMetric label="延迟" value={`${trace.latencyMs}ms`} />
+              <TraceMetric label="Token" value={String(trace.totalTokens ?? 0)} />
+              <TraceMetric label="成本" value={`$${(trace.cost ?? 0).toFixed(4)}`} />
             </div>
-            <DetailBlock title="Rendered prompt" value={trace.prompt.renderedPrompt} />
-            <DetailBlock title="Assertion results" value={JSON.stringify(result.assertionResults, null, 2)} />
-            <DetailBlock title="Raw request" value={JSON.stringify(trace.request, null, 2)} />
+            <DetailBlock title="渲染后的 Prompt" value={trace.prompt.renderedPrompt} />
+            <DetailBlock title="断言结果" value={JSON.stringify(result.assertionResults, null, 2)} />
+            <DetailBlock title="原始请求" value={JSON.stringify(trace.request, null, 2)} />
           </CardContent>
         </Card>
       </div>
