@@ -1,33 +1,172 @@
-# vibe-coding-AgentEval-Lite
+# AgentEval Lite
 
-## 一句话说明
-写清这个项目要解决什么问题，或要完成什么作品。
+AgentEval Lite is a lightweight visual workbench for testing, evaluating and comparing prompts and LLM agents.
 
-## 当前状态
-- 阶段：初始化
-- 最近更新时间：2026-05-19
-- 当前进展：项目骨架已创建
-- 当前阻塞：暂无
+It focuses on a practical loop for AI product managers and AI app developers:
 
-## 下一步
-- [ ] 补充 `context.md`
-- [ ] 整理第一批资料到 `resources.md`
-- [ ] 明确本阶段目标和验收标准
+```text
+Prompt Version -> Model Provider -> Dataset -> Assertions -> Eval Run -> Result Matrix -> Run Detail -> Compare Report
+```
 
-## 项目索引
-- `AGENTS.md`：Codex / 通用 AI 协作规则（含代码分层规范）
-- `CLAUDE.md`：Claude Code 协作规则
-- `context.md`：项目背景、目标、约束
-- `progress.md`：推进记录
-- `decisions.md`：关键决策
-- `resources.md`：云端资源、外部链接、素材索引
-- `.claude/rules/`：模块化领域规范（架构分层、代码风格、技术栈等）
-- `docs/`：稳定文档
-- `work/`：推进中的草稿、实验、笔记
-- `artifacts/`：过程资产
-- `deliverables/`：阶段性交付物
-- `archive/`：旧版本、废弃方案、历史备份
+AgentEval Lite is inspired by promptfoo, Langfuse, Phoenix, Opik, DeepEval, Ragas, Helicone and Agenta. It focuses on providing a lightweight visual workflow for prompt and agent evaluation instead of rebuilding a full LLMOps platform.
 
-## AI 协作提示
-开始前请先读取 `AGENTS.md`，再结合 `README.md`、`context.md`、`progress.md`、`decisions.md` 进入项目状态。
-代码型项目额外读取 `.claude/rules/architecture.md` 了解分层规范。
+中文说明：AgentEval Lite 不是重新造 Dify / Langfuse / promptfoo，而是借鉴成熟项目中已经验证过的 Prompt 评测、Trace、Dataset、Experiment、Assertion 等机制，做一个更轻量、更可视化、更适合 AI 产品经理和独立开发者使用的评测工作台。
+
+## Why
+
+Most LLM apps fail not because they cannot run, but because they cannot be measured, compared, traced and improved.
+
+AgentEval Lite turns prompt changes from "I think this is better" into a repeatable evaluation workflow.
+
+## Features
+
+- Prompt Studio: edit prompt versions and run mock trials.
+- Model Providers: OpenAI-compatible provider shape with `base_url`, env-based API key, model name and pricing fields.
+- Dataset Management: starter JSON dataset with input variables, expected output and tags.
+- Assertions: `is-json`, `json-schema`, `contains`, `not-contains`, `regex`, `length-range`, `exact-match`, `manual-score`.
+- Evaluation Runs: batch runner with mock provider support.
+- Result Matrix: promptfoo-inspired matrix view.
+- Run Detail: input, expected output, actual output, rendered prompt, assertion results and trace payload.
+- Compare Report: success rate, schema pass rate, latency and cost comparison.
+
+## Screenshots
+
+Screenshots can be added after running the app locally:
+
+- Dashboard: `/dashboard`
+- Prompt Studio: `/prompts`
+- Result Matrix: `/results`
+- Compare Report: `/reports`
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui-style local components
+- Supabase / PostgreSQL schema
+- Zod
+- AJV
+- Recharts
+- Vitest
+- ESLint + Prettier
+
+## Quickstart
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open `http://localhost:3000`.
+
+The app includes a mock provider and sample dataset, so it can be demonstrated without a real API key.
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and fill values only when you want persistent Supabase storage or a real model provider.
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+OPENAI_COMPATIBLE_API_KEY=
+OPENAI_COMPATIBLE_BASE_URL=https://api.openai.com/v1
+OPENAI_COMPATIBLE_MODEL=gpt-4o-mini
+```
+
+Do not commit real API keys. Provider records should reference an environment variable name such as `OPENAI_COMPATIBLE_API_KEY`.
+
+## Database
+
+The Supabase migration lives at:
+
+```text
+supabase/migrations/202605200001_init_agenteval_lite.sql
+```
+
+Core tables:
+
+- `prompts`
+- `prompt_versions`
+- `model_providers`
+- `datasets`
+- `test_cases`
+- `assertions`
+- `eval_runs`
+- `eval_results`
+- `run_traces`
+- `reports`
+
+## Evaluation Flow
+
+1. Create or select a prompt version.
+2. Configure an OpenAI-compatible provider or use the mock provider.
+3. Select a dataset.
+4. Select assertion rules.
+5. Run the batch evaluation.
+6. Review the result matrix and run detail.
+7. Compare runs and export a report.
+
+V0.1 intentionally avoids LLM-as-judge, RAG scoring, multi-agent orchestration, MCP integrations, workflow drag-and-drop and full observability SDKs.
+
+## Sample Dataset
+
+Starter cases live in:
+
+```text
+data/sample-dataset.json
+```
+
+They cover summarization, intent recognition, JSON structured output, classification and risk review.
+
+## Scripts
+
+```bash
+pnpm dev
+pnpm build
+pnpm lint
+pnpm test
+pnpm typecheck
+pnpm format
+```
+
+Before submitting changes, run:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+```
+
+## Inspired By
+
+- [promptfoo](https://github.com/promptfoo/promptfoo)
+- [Langfuse](https://github.com/langfuse/langfuse)
+- [Phoenix](https://github.com/Arize-ai/phoenix)
+- [Opik](https://github.com/comet-ml/opik)
+- [DeepEval](https://github.com/confident-ai/deepeval)
+- [Ragas](https://github.com/explodinggradients/ragas)
+- [Helicone](https://github.com/Helicone/helicone)
+- [Agenta](https://github.com/Agenta-AI/agenta)
+
+This project borrows concepts and product patterns, not source code or UI assets.
+
+## Roadmap
+
+- V0.1: Visual Prompt / Agent Eval Workbench.
+- V0.2: promptfoo YAML import/export and Markdown/CSV/JSON report export.
+- V0.3: Human review fields, failure-mode tagging and enhanced traces.
+- V0.4: Experiment-style run comparison and trend views.
+- V0.5: Optional promptfoo CLI, Langfuse, DeepEval or Ragas integrations.
+
+## Resume Positioning
+
+Suggested wording:
+
+> Built AgentEval Lite, a lightweight visual Prompt / Agent evaluation workbench inspired by promptfoo and Langfuse. Implemented prompt versioning, dataset-based batch evaluation, rule assertions, OpenAI-compatible provider adapter, result matrix, run trace details and comparison reports with Next.js, TypeScript, Zod, Supabase schema and Vitest.
+
+## License
+
+MIT

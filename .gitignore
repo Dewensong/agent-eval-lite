@@ -7,6 +7,7 @@ __pycache__/
 # env / secrets
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 
@@ -29,3 +30,8 @@ artifacts/cache/
 dist/
 build/
 out/
+.next/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
