@@ -1,8 +1,8 @@
 # AgentEval Lite
 
+![CI](https://github.com/Dewensong/agent-eval-lite/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Status](https://img.shields.io/badge/status-MVP-green)
-![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)
 
 AgentEval Lite is a lightweight visual workbench for testing, evaluating and comparing prompts and LLM agents.
 
