@@ -1,5 +1,9 @@
 # AgentEval Lite
 
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Status](https://img.shields.io/badge/status-MVP-green)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)
+
 AgentEval Lite is a lightweight visual workbench for testing, evaluating and comparing prompts and LLM agents.
 
 It focuses on a practical loop for AI product managers and AI app developers:
@@ -31,12 +35,21 @@ AgentEval Lite turns prompt changes from "I think this is better" into a repeata
 
 ## Screenshots
 
-Screenshots can be added after running the app locally:
+| Dashboard | Prompt Studio |
+|-----------|---------------|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Prompt Studio](docs/screenshots/prompt-studio.png) |
 
-- Dashboard: `/dashboard`
-- Prompt Studio: `/prompts`
-- Result Matrix: `/results`
-- Compare Report: `/reports`
+| Datasets | Assertions |
+|----------|------------|
+| ![Datasets](docs/screenshots/datasets.png) | ![Assertions](docs/screenshots/assertions.png) |
+
+| Evaluation Run | Result Matrix |
+|----------------|---------------|
+| ![Evaluation](docs/screenshots/evaluations.png) | ![Result Matrix](docs/screenshots/results.png) |
+
+| Settings | Compare Report |
+|----------|---------------|
+| ![Settings](docs/screenshots/settings.png) | ![Compare Report](docs/screenshots/reports.png) |
 
 ## Tech Stack
 

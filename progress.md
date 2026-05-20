@@ -23,6 +23,18 @@
 - 保留 JSON 字段名、OpenAI-compatible 等必要技术术语，避免破坏评测契约和模型适配语义。
 - 下一步：重新运行质检并刷新 Docker Desktop 容器。
 
+## 2026-05-20
+- 引入 React Context + localStorage 持久化层（`lib/store/app-store.tsx`、`lib/store/storage.ts`）。
+- 将所有页面从静态 demo 改造为可 CRUD 的真实工具：
+  - Prompt Studio：支持多 Prompt 管理、版本保存/切换/删除、试跑。
+  - Datasets：新增/删除测试用例、JSON 导入、测试集管理。
+  - Assertions：8 种断言类型的创建/删除。
+  - Settings：Provider 新增/编辑/删除，保存到 localStorage。
+  - Evaluation Run：下拉选择 Prompt/Provider/Dataset/Assertions 组合，运行结果持久化。
+  - Dashboard/Result Matrix/Run Detail/Compare Report：从 store 读取真实数据，支持空状态引导。
+- 质检通过：lint 0 warnings、typecheck 0 errors、12 tests passed、build 成功。
+- 下一步：启动 dev server 手动验证完整评测闭环，考虑补组件测试和错误边界。
+
 ## 记录规则
 - 每次重要推进追加一条日期记录
 - 记录做了什么、产出了什么、下一步是什么
